@@ -1,0 +1,305 @@
+@import './reset';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;;
+    height: 100vh;  
+    font-size: 16px;
+    background: linear-gradient(to right, rgba(#333,1), rgba(rgb(11, 161, 231),0.3)), url('../img/maninsuit.jpg') center top;
+    background-size: cover;
+    
+    
+
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10vh 90vh 90vh;
+    grid-template-areas:  'nav' 'row1' 'about';
+    width: 90%;
+    margin: 20px auto ;
+
+    overflow: hidden;
+}
+
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    flex-direction: $direction;
+    align-items: center;
+}
+
+@mixin  flexDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+    
+}
+@mixin  flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-section{
+    grid-area: nav;
+    height: 10vh;
+
+    .nav{
+        height: 100%;
+        @include flex(row,space-between);
+        
+    }
+    .nav-links{
+        width: 100%;
+        height: 100%;
+        @include flex(row,flex-end);
+        gap: 20px;
+        
+    }
+    .nav a{
+        color: white;
+    }
+    
+}
+.intro{
+    grid-area: row1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: white;
+    @include flex(row,center );
+    
+    img{
+        width: 150px;
+        height: 150px;
+    }
+    .css{
+        position: absolute;
+        top: 25%;
+        right: 10%;
+    }
+    .js{
+        position: absolute;
+        top: 30%;
+        right: 30%;
+    }
+    .react{
+        position: absolute;
+        top: 50%;
+        left: 72%;
+    }
+    .nodejs{
+        position: absolute;
+        top: 70%;
+        right: 5%;
+    }
+    .html{
+        position: absolute;
+        top: 50%;
+        left: 55%;
+    }
+    .greeting{
+        flex: 1;
+        letter-spacing: 2px;
+        font-size: 3rem;
+        margin-bottom: 10px;
+        .quote{
+            margin-top: 15px;
+            font-size: 1.5rem;
+            
+        }
+    }
+    // .highlight{
+    //     background: rgb(216, 42, 42);
+    //     cursor: pointer;
+    //     border-radius: 5px;
+    // }
+    .pic{
+        @include flex(row,flex-end );
+        flex: 1;
+    }
+    button{
+        width: 200px;
+        height: 50px;
+        border: 1px solid white;
+        background: linear-gradient(75deg, rgb(229,77,38), rgb(11, 161, 231) );
+        
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    #caret-down{
+        position: absolute;
+        bottom: 0;
+        width: 20px;
+        height: 20px;
+        border: 5px solid white;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+
+    }
+    
+}
+.intro-section-img{
+    grid-area: img;
+    background: cadetblue;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    
+    cursor: pointer;
+    overflow: hidden;
+    .text-container{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 80%;
+        height: 80%;
+        padding: 1rem;
+        
+        background: wheat;
+        p{
+            font-size: 1rem;
+            line-height: 1.6;
+            letter-spacing: 1.5px;
+        }
+        
+    }
+
+    img{
+        position: relative;
+        z-index: 2;
+    }
+    .cover{
+        width: 100%;
+        height: 100%;
+        background:grey;
+        opacity: 0.6;
+        position: absolute;
+        top: -100%;
+        left: 0;
+        z-index: 2000;
+        @include flex(row,center);
+        
+        
+        
+    }
+    
+}
+.fact{
+    @include flexCenter;
+    height: 5px;
+    width: 5pxpx;
+    box-shadow: 2px 2px 5px grey;
+    border: 0.5px solid grey;
+}
+.fact1{
+    grid-area: fact1;
+    
+    
+    @include flex(column,space-around );
+}
+.fact2{
+    grid-area: fact2;
+    @include flexCenter;
+    
+    &:hover{
+        
+        cursor: pointer;
+    }
+}
+.fact3{
+    grid-area: fact3;
+    @include flexCenter;
+    
+
+}
+.fact4{
+    grid-area: fact4;
+    @include flexCenter;
+    
+}
+
+.about{
+    grid-area: about;
+
+    height: 100%;
+    @include flex(column, center );
+    
+    gap: 20px;
+    color: white;
+    transition: all 0.5s ease;
+    .title{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-right: auto;
+        font-size: 1.5rem;
+    }
+    button{
+        border: none;
+        padding: 0;
+        margin: 0;
+        background: none;
+        font-size: 1rem;
+        button:active{
+            outline: none;
+            border: 1px solid red;
+            border: none;
+        }
+    }
+    
+    &-from, &-doings , &-future{
+        
+        @include flex(column,center);
+        gap: 20px;
+        height: 20%;
+        width: 80%;
+        padding: 1rem;
+        background: linear-gradient(75deg, rgb(229,77,38), rgb(11, 161, 231) );
+        border: 1px solid white;
+
+        p{
+            
+            transition: all 5s ease-out;
+        }
+    }
+    .showBtn{
+        margin-left: auto;
+    }
+    .title-content{
+        @include flex(column, space-around);
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+// HOME 
+.logo{
+    
+    li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        margin-bottom: 20px;
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            color: white;
+            
+            flex: 1;
+        }
+        span{
+            flex: 1;
+            width: 0;
+            margin-left: 10px;
+        }
+        
+    }
+    li:hover{
+        cursor: pointer;
+    }
+}
