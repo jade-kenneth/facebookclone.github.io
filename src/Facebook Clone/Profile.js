@@ -17,6 +17,10 @@ import { reducer } from "./reducer";
 import {GoDiffAdded} from 'react-icons/go';
 import PostContent1 from './PostContent1';
 import PostContent2 from './PostContent2';
+import PropTypes from 'prop-types';
+import defaultProfile from '../img/unknownboy.jpg';
+import PostModal from './PostModal';
+
 const defaultState = {
     login_dataS: login_data,
     isModalOpen: false,
@@ -24,13 +28,15 @@ const defaultState = {
     isAddAccount: false,
     activeAccount: [],
     isCreateAccount: false,
-    isActive: false
+    isActive: false,
+    postModal: false
 }
 const Profile = () => {
-    
+    const [state, dispatch] = useReducer(reducer, defaultState);
     return (
             <div className="profile-container">
                 <DisplayProfile/>
+                
             </div>
     )
 }
@@ -111,7 +117,7 @@ const DisplayProfile = () => {
     return (
         <>
         
-        <Header pic={profile} name={username}/>
+        <Header pic={profile || defaultProfile} name={username}/>
         <div className="super-header">
             <div className="profile-timeline-container">
                 <div className="profile-timeline">
@@ -132,11 +138,13 @@ const DisplayProfile = () => {
                 <PostContent1 lived={lived} pic={pic} job={job}/>
             </div>
             <div className="posts-content2">
-                <PostContent2 id={id} profile={profile} name={username}/>
+                
+                <PostContent2 id={id} profile={profile} name={username} lastname={lastname}/>
             </div>
         </div>
         
         </>
     )
 }
+
 export default Profile

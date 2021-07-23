@@ -1,16 +1,16 @@
 
 import Home from './js/Home';
-import Cart from './js/Cart';
+
 import Index from './Store/index'
-import OnlineSelling from './OnlineAccSelling/Home'
-import Facebook from './Facebook Clone'
+
+import Facebook from './FacebookClone'
+//import {AuthProvider} from './Facebook Clone/contexts/'
 function App() {
   const PRODUCTS = ['Milo', 'Beer', 'Emperador']; 
   return (
     <>
     
     <div >
-      
       <Facebook/>
     </div>
     </>

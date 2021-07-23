@@ -1,0 +1,11 @@
+{
+  "name": "signupbackend",
+  "version": "1.0.0",
+  "description": "Sign up backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

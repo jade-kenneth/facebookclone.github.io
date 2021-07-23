@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "post_id": 0,
+    "post": "How are you",
+    "comment": [
+      {
+        "comment_id": 0,
+        "comment1": "hi",
+        "replies": [
+          {
+            "reply_id": 0,
+            "reply1": "Im fine!"
+          }
+        ]
+      },
+      {
+        "comment_id": 1,
+        "comment1": "hello world im here to be doomed!",
+        "replies": [
+          {
+            "reply_id": 0,
+            "reply1": "LOL HAHAHA!"
+          },
+          {
+            "reply_id": 1,
+            "reply1": "HAHHAHAH"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "post_id": 1,
+    "post": "Feeling good",
+    "comment": [
+      {
+        "comment_id": 0,
+        "comment1": "hi",
+        "replies": []
+      },
+      {
+        "comment_id": 1,
+        "comment1": "HAPPY FOR YOU",
+        "replies": [
+          {
+            "reply_id": 0,
+            "reply1": "NICE!"
+          },
+          {
+            "reply_id": 1,
+            "reply1": "GOOD!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "post_id": 2,
+    "post": "Hi!",
+    "comment": [
+      {
+        "comment_id": 0,
+        "comment1": "hi",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "post_id": 3,
+    "post": "Hell no!",
+    "comment": [
+      {
+        "comment_id": 0,
+        "comment1": "hi",
+        "replies": []
+      }
+    ]
+  }
+]

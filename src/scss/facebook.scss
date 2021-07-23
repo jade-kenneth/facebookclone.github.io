@@ -1,5 +1,7 @@
 @import './reset';
-
+@import './skeletonStyle.scss';
+@import './mixin.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 body{
     background-color: rgb(24,24,27);
     font-family: Helvetica, Arial, sans-serif;
@@ -7,37 +9,37 @@ body{
     width: 100%;
     color: white;
     
+    font-family: 'Roboto', sans-serif;
+    
+    
+    
 
 } 
-*{
-    box-sizing: border-box;
-}
-@mixin flexDirection($direction){
-    display: flex;
 
-    flex-direction: $direction;
-
-}
-@mixin flexCenter{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .container {
-    width: 80%;
-    margin: 10% auto;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    
+    
 }
 .brand-title{
     color: rgb(25,119,243);
     font-weight:bold;
 }
 .Login{
-    height: 600px;
-    width: 100%;
+   
+    background: white;
+    width: 80%;
+    
     @include flexDirection(row);
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
     
     h3{
-        color: white;
+        color: rgb(133, 123, 123);
     }
     p{
         color: rgb(96,102,113)
@@ -51,7 +53,7 @@ body{
         .profile-preview-container{
             @include flexDirection(column);
             height: 170px;
-            width: 150px;
+            width: 170px;
             align-items: center;
             gap:10px;
             position: relative;
@@ -63,21 +65,31 @@ body{
                 height: 80%;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
+                object-fit: fill;
+                
             }
             .close-btn{
+                width: 20px;
+                height: 20px;
                 font-size: 1.5rem;
                 position: absolute;
                 top: 3px;
                 left: 3px;
-                border-radius: 20px;
+                border-radius: 50%;
                 border: none;
                 cursor: pointer;
+                @include flexCenter;
             }
         }
         .profile-preview-container:hover{
             cursor: pointer;
             box-shadow: 2px 2px 5px grey;
             transition: all ease 0.5s;
+            .current_logged_profile_img{
+                background-size: cover;
+                
+                
+            }
         }
         p{
             color: white;
@@ -92,6 +104,7 @@ body{
         @include flexDirection(column);
         gap: 10px;
         flex: 2;
+        
 
     }
     .login-container{
@@ -137,8 +150,8 @@ button[type=submit]{
     top: 0;
     left: 0;
     z-index: 999;
-    background-color: rgb(145,145,146);
-    opacity: 0.8 ;
+    background-color: rgba(145,145,146,0.8);
+    
     
 }
 .modal{
@@ -157,6 +170,8 @@ button[type=submit]{
     padding: 2rem;
     gap: 15px;
     background-color: rgb(62,77,102);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(75, 73, 73);
     .modal-login{
         width: 100%;
         height: 100%;
@@ -182,6 +197,9 @@ button[type=submit]{
             background: rgb(29,232,183);
         }
         .close-modal{
+            width: 30px;
+            height: 30px;
+            border-radius:50%;
             position: absolute;
             top: 5px;
             right: 5px;
@@ -208,62 +226,31 @@ button[type=submit]{
             width: 100%;
             border-radius: 5px;
             background-color: rgb(25,119,243);
+            color: white;
         }
         
 }
     .super-header{
         height: auto;
+        
         @include flexDirection(column);
         justify-content: space-between;
         background-color:  rgb(36,37,38);
-    }
-    .profile-container{
-        height: auto;
-        width: 100%;
-        position: relative;
-        
         .profile-timeline-container{
-            height: 450px;
-            width: 90%;
+            
+            height: auto;
+            width: 100%;
             margin: 0 auto;
             border-bottom: 1px solid grey;
             .profile-timeline{
-                height: 400px;
-                width: 90%;
-                position: absolute;
-                top: 0;
-                right: 50%;
-                transform: translateX(50%);
+                position: relative;
+                height: 300px;
+                max-width: 90%;
+                
+                margin: auto;
                 z-index: 0;
                 border-radius: 5px;
                 background-image: linear-gradient(180deg,white,grey);
-                .profile-picture{
-                    height: 150px;
-                    width: 100%;
-                    position: absolute;
-                    bottom: -30px;
-                    right: 50%;
-                    text-align: center;
-                    transform: translateX(50%);
-                    z-index: 10000000;
-                    img{
-                        width: 150px;
-                        height: 100%;
-                        z-index: 100000;
-                        border-radius: 50%;
-                        border: 3px solid white;
-                        
-                    }
-                    .profile-name{
-                        height: 100%;
-                        width: 100%;
-                        @include flexDirection(column);
-                        h2{
-                            margin: 5px auto;
-                            width: 100%;
-                        }
-                    }
-                }
                 .select-profile-cover-photo-btn{
                     position: absolute;
                     bottom: 20px;
@@ -280,17 +267,90 @@ button[type=submit]{
                         font-size: 1.2rem;
                     }
                 }
+            }
+                .profile-picture{
+                    
+                    height: auto;
+                    max-width: 90%;
+                    margin: auto;
+                    @include flexDirection(row);
+                    align-items: center;
+                    
+                    gap: 5px;
+                    
+                    
+                    .profile-img{
+                        width:200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        
+                    }
+                    .profile-name{
+                        
+                        
+                        width: 100%;
+                        @include flexDirection(column);
+                        
+                        
+                        h2{
+                            
+                            font-size: 2.2rem;
+                        }
+                        .all-friends{
+                            @include flexDirection(row);
+                            .friends{
+                                background: none;
+                                img{
+                                    height:35px;
+                                    width: 35px;
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                        
+                    }
+                    .DisplayProfileActions{
+                        @include flexDirection(column);
+                        justify-content: flex-end;
+                        height: auto;
+                        
+                        width: 250px;
+                        gap: 10px;
+                        li{
+                            height: 40px;
+                            width: auto;
+                            
+                            
+                        }
+                        a{
+                            
+                            
+                            height: 100%;
+                            padding: 0.5rem;
+                            background-color: rgb(15,143,243);
+                            @include flexCenter;
+                            border-radius: 5px;
+                            color: white;
+                        }
+                    }
+                
                 
             }
         }
-        
-        
+    }
+    .profile-container{
+        height: 100%;
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
     }
     
     .DisplayProfileNav{
         @include flexDirection(row);
         justify-content: space-between;
-        height: 50px;
+        height: 70px;
         width: 100%;
         position: sticky;
         top: 50px;
@@ -299,80 +359,139 @@ button[type=submit]{
         padding: 0 5%   ;
         background: rgb(36,37,38);
         margin-bottom: 20px;
-        z-index: 1000000000;
+        z-index: 10000;
+        
         .DisplayProfileLinks{
+            
             @include flexDirection(row);
             gap: 10px;
-            padding: 1rem;
+            padding: 0 1rem;
             height: 100%;
+            width: 50%;
             li{
                 height: 100%;
-                @include flexCenter;           
-            }
-            a{
-                height: 100%;
-                @include flexCenter;
-                padding: 1.5rem 5px;
-                color: white;
-                cursor: pointer;
-            }
-            #active{
-                border-bottom: 2px solid rgb(15,143,243);
-                color: rgb(15,143,243);
-            }
-        }
-        .DisplayProfileActions{
-            @extend .DisplayProfileLinks;
-            li{
-                height: 100%;
-                @include flexCenter;
+                @include flexCenter;  
+                
+                
             }
             a{
                 
                 height: 100%;
                 @include flexCenter;
-                background-color: rgb(15,143,243);
-                padding: 1rem;
-                border-radius: 5px;
+                padding: 1.5rem 5px;
+                color: white;
+                cursor: pointer;
+                &:hover{
+                    background:rgb(81, 82, 84);
+                    border-radius: 5px;
+                }
             }
+            #active{
+                border-bottom: 2px solid rgb(15,143,243);
+                color: rgb(15,143,243);
+                background: none;
+            }
+        }
+        #activeComponent{
+            display: flex;
+        }
+        #unActiveComponent{
+            display: none;
         }
         
     }
+    .component-div{
+        height: 1000px;
+        border: 1px solid red;
+    }
+    
     .nav-header{
-        @include flexDirection(row);
-        justify-content: space-around;
-        z-index: 100000;
-        height: 50px;
-        width: 100%;
+        
         background: rgb(36,37,38);
         box-shadow: 0px 1px 5px grey;
+        z-index: 100000;
         position: sticky;
-        
         top: 0;
+        font-size: 1.3rem;
+        .center{
+            @include flexDirection(row);
+            justify-content: space-around;
+            height: 50px;
+            width: 90%;
+            margin: auto;
+            
+        }
+        
         a{
             padding: 0;
             margin: 0;
         }
-        font-size: 1.5rem;
+        .fixed-size{
+            min-height: 30px;
+            min-width: 30px;
+            
+        }
+        .circle-hover{
+            background: rgb(58,59,60);
+            border-radius: 50%;
+            padding: 0.2rem;
+            &:hover{
+                background: rgb(81, 82, 84);
+                cursor: pointer
+            }
+        }
+        .square-hover{
+            
+            padding: 0.8rem 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            &:hover{
+                background: rgb(81, 82, 84);
+                cursor: pointer
+            }
+        }
         .nav-links-0, .nav-links-1 , .nav-links-2{
             @include flexDirection(row);
             justify-content: center;
-            align-items: center;
-            gap: 20px;
-            
-            
+            align-items: center; 
         }
         .nav-links-0{
-            font-size: 3rem;
+            
             input{
                 height: 40px;
                 border-radius: 20px;
+                width: 60%;
             }
+            .facebook-logo{
+                font-size: 2.5rem;
+                color: rgb(9,125,234);
+                background: white;
+                border-radius: 50%;
+                outline: none;
+                
+            }
+            gap: 5px;
+            justify-content: flex-start;
+            width: 25%;
+            
         }
         .nav-links-1 {
-            gap: 50px;
+            justify-content: space-around;
+            width: 50%;
+            .show-hidden-burger{
+                @extend .fixed-size;
+                display: none;
+                
+            }
+            
         }
         .nav-links-2 {
+            width: 25%;
+            
+            
+            gap: 10px;
+            justify-content: flex-end;
             .group{
                 @include flexDirection(row);
                 justify-content: center;
@@ -384,35 +503,86 @@ button[type=submit]{
                     background: rgb(15,143,243);
                     cursor: pointer;
                 }
+                
             }
             
         }
+        .dropdown{
+            
+            position: fixed;
+            //top 50.5px set because nav-header is 50px height
+            top: 50.5px;
+            right: 5%;
+            height: auto;
+            width: 340px;
+            border-radius: 5px;
+            padding: 1rem;
+            background-color: rgb(36,37,38);
+            z-index: 500000000000;
+            .profile{
+                width: 100%;
+                padding: 10px 0;
+                cursor: pointer;
+                @include flexDirection(row);
+                gap: 10px;
+                border-bottom: 1px solid grey;
+                &:hover{
+                    background-color: grey;
+                    border-radius: 5px;
+                    
+                }
+            }
+            .feedback{
+                @extend .profile;
+                @include flexCenter;
+                justify-content: flex-start;
+            }
+            .logout{
+                @extend .profile;
+                border: none;
+                
+            }
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
     }
+    
     .mini-pic{
         border-radius: 50%;
         width: 30px;
-        
+        height: 30px;
     }
 
 .Posts{
     width: 90%;
     margin: auto;
-    height: 200vh;
+    height: 100%;
     @include flexDirection(row);
-    gap: 10px;
+    gap: 20px;
+    
+    position: relative;
+    
     .posts-content1{
         width: 45%;
         
-        
+        position: sticky;
+        top: 0;
+        bottom: 0;
+       
+       height: 100%;
     }
     .posts-content2{
         width: 55%;
+        height: 100%;
+        
+        
         
     }
     .post-container-left{
         @include flexDirection(column);
         gap: 20px;
-        max-width: 600px;
         
         .intro{
             width: 100%;
@@ -440,30 +610,43 @@ button[type=submit]{
             
         }
         .photos{
+            
             width: 100%;
             height: auto;
             background: rgb(36,37,38);
             padding: 1rem;
-            border-radius: 10px;
+            border-radius: 4px;
             .photo-nav{
                 @include flexDirection(row);
                 justify-content: space-between;
-            }
+            }   
             .photo-list{
+                
+                height: auto;
                 width: 100%;
                 display: grid;
-                grid-template-columns: repeat(auto-fill,31%);
-                grid-template-rows: repeat(3,31%);
+                grid-template-columns: repeat(auto-fill,32.5%);
+                grid-template-rows: repeat(3,33%);
                 grid-gap: 5px;
                 border-radius: 5px;
-                img{
-                    height: 100%;
+                
+                .photo-list-container{
+                    @include flexDirection(column);
                     width: 100%;
-                    &:hover{
-                        opacity: 0.9;
-                        cursor: pointer;
+                    height: 100%;
+                    .myphotos{
+                        
+                        width: 100%;
+                        height: 100%;
+                        
+                        &:hover{
+                            opacity: 0.9;
+                            cursor: pointer;
+                        }
                     }
                 }
+               
+                
             }
             
         }
@@ -475,7 +658,7 @@ button[type=submit]{
                     @include flexDirection(column);
                     .friend-photo{
                         width: 100%;
-                        height: 90%;
+                        height: 170px;
                         &:hover{
                             opacity: 0.9;
                             cursor: pointer;
@@ -549,11 +732,13 @@ button[type=submit]{
         }
         nav{
             @extend .photos;
+            height: auto;
             width: 500px;
             .nav-policy{
                 font-size: 0.9rem;
                 @include flexDirection(row);
                 gap: 10px;
+                
                 
             }
         }
@@ -561,9 +746,11 @@ button[type=submit]{
     }
     .post-container-right{
         @extend .post-container-left;
+        
         .post-photo{
             border-radius: 50%;
             width: 50px;
+            height: 50px;
         }
         .post-content{
             @extend .intro;
@@ -571,7 +758,6 @@ button[type=submit]{
             height: auto;
             @include flexDirection(column);
             gap: 10px;
-            
             .whats-on-mind{
                 gap:10px;
                 @include flexDirection(row);
@@ -585,6 +771,7 @@ button[type=submit]{
                     width: 100%;
                     padding: 0.1rem;
                     height: 40px;
+                    
                     input{
                         border: none;
                         outline: none;
@@ -602,14 +789,16 @@ button[type=submit]{
                 @include flexDirection(row);
                 justify-content: center;
                 align-content: center;
-                gap: 50px;
+                
+                width: 100%;
                 .live-video-btn, .photos-video-btn, .life-event-btn{
                     @include flexDirection(row);
                     justify-content: center;
                     align-items: center;
                     font-size: 1.3rem;
                     font-weight: normal;
-                    gap: 10px;
+                    gap: 5px;
+                    width: 33.3%;
                 }
             }
         }
@@ -629,6 +818,25 @@ button[type=submit]{
                     align-items: center;
                 }
                 
+            }
+            .text-post{
+                
+                padding: 0;
+                
+                textarea{
+                    width: 100%;
+                    height: 30px;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    resize: none;
+                    color: white;
+                    font-size: 1.5rem;
+                    overflow: hidden;
+                    padding: 0;
+                    margin: 0;
+                    
+                }
             }
             .react-post{
                 @include flexDirection(row);
@@ -654,7 +862,8 @@ button[type=submit]{
             .comment-section{
                 @include flexDirection(column);
                 align-items: center;
-                gap: 10px;
+
+                width: 100%;
                 .grp-input{
                     padding: 0.3rem;
                     @include flexDirection(row);
@@ -673,20 +882,70 @@ button[type=submit]{
                 }
                 .comment{
                     margin-right: auto;
-                    @include flexDirection(row);
-                    width: auto;
-                    gap: 5px;
-                    .grp-comment{
-                        .comment-info{
-                            background: white;
-                            border-radius: 15px;
-                            padding: 0.5rem;
-                            max-width: auto;
-                            height: 45px;
-                            color: black;
+                    @include flexDirection(column);
+                    width: 100%;
+                    .commentS{
+                        @include flexDirection(row);
+                        gap: 5px;
+                        height: 45px;
+                        .comment-delete-hide{
+                        position: relative;
+                            align-items: center;
+                            height: 100%;
+                            @include flexCenter;
+                            
+                            .comment-three-dot{
+                                font-size: 1.2rem;
+                                border-radius: 50%;
+                                
+                            }
+                            .comment-three-dot:hover{
+                                background: grey;
+                                cursor: pointer;
+                                
+                            }
+                            
+                            .delete-hide{
+                                position: absolute;
+                                bottom: -50px;
+                                background-color: black;
+                                width: 150px;
+                                padding: 0.5rem;
+                                @include flexDirection(column);
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 20px;
+                                h6:hover{
+                                    background-color: grey;
+                                    cursor: pointer;
+                                    height: 100%;
+                                    width: 100%;
+                                    text-align: center;
+                                    
+                                }
+
+                            }
                         }
+                    }
+                    
+                    .comment-info{
+                        background: white;
+                        border-radius: 15px;
+                        padding: 0.5rem;
+                        width: auto;
+                        height: 45px;
+                        color: black;
+                        
+                    }
+                    
+                    .grp-comment{
+                        width: 100%;
+                        padding-left: 2.3rem;
                         .comment-reaction{
                             @include flexDirection(column);
+                            width: 100%;
+                            
                             .reply:hover{
                                 text-decoration: underline;
                                 cursor: pointer;
@@ -694,8 +953,9 @@ button[type=submit]{
                             .comment-actions{
                                 @include flexDirection(row);
                                 gap: 5px;
-                                padding:  0.1rem 0.5rem;
+                                padding:  0.3rem 0.5rem;
                                 color: white;
+                                
                             }   
                         
                         }
@@ -704,23 +964,304 @@ button[type=submit]{
                             
                         }
                     }
+                    
                     .col{
                         @include flexDirection(column);
+                        #unactive{
+                            display: hidden;
+                        }
+                        #active{
+                            display: block;
+                        }
                     }
                     .row{
                         @include flexDirection(row);
                         align-items: center;
                         gap: 5px;
+                        width: 100%;
+                        
                     }
+                    
                 }
                 
             }
         }
-        
+        .widthMax {
+            width: 100%;
+        }
+        .reply-input{
+            margin-bottom: 0.5rem;
+            
+        }
     }
 }
 a{
     color: rgb(15,143,243);
+}
+.NavTab{
+    @extend .Posts;
+    @include flexDirection(column);
+    padding: 1rem;
+    height: auto;
+    background: rgb(36,37,38);
+    border-radius: 5px;
+    margin-top: 10px;
+    .NavTabHeader{
+        @include flexDirection(row);
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        h3{
+            margin-right: auto;
+        }
+        .search-friends-input{
+            border-radius: 20px;
+            background: white;
+            height: 40px;
+            width: 170px;
+            @include flexCenter;
+            input{
+                height: 30px;
+                width: 100%;
+                border: none;
+                border-radius: 20px;
+            }
+            .search-icon{
+                color: black;
+            }
+        }
+    }
+    .friend-lists{
+        width: 100%;
+        .nav-friends{
+            width: 60%;
+            height: 50px;
+            @include flexDirection(row);
+            justify-content: space-around;
+            cursor: pointer;
+            li{
+                height: 100%;
+                width: 100%;
+                
+            }
+            a{
+                
+                height: 100%;
+                color: white;
+                @include flexCenter;
+                &:hover{
+                    background:rgb(81, 82, 84);
+                    border-radius: 5px;
+                }       
+            }
+            #active {
+                border-bottom: 2px solid rgb(15,143,243);
+                color: rgb(15,143,243);
+                &:hover{
+                    background: none;
+                }
+            }
+        }
+    }
+    .friend{
+        @include flexDirection(row);
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        width: 100%;
+        
+        .each-friend{
+            height: 100px;
+            width: 48%;
+            border: 0.01px solid rgb(68, 63, 63);
+            @include flexDirection(row);
+            align-items: center;
+            padding: 1rem;
+            gap: 10px;
+            border-radius: 5px;
+            .pic{
+                width: 80px;
+                height: 80px;
+                border-radius: 10px;
+            }
+        }
+    }
+    .photos{
+        
+        @include flexDirection(row);    
+        width: 100%;
+        gap: 5px;
+        flex-wrap: wrap;
+        .each-photo{
+            width: 33%;
+            height: 200px;
+            border-radius: 5px;
+            .pic{
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+            }
+        }
+    }
+    
+    
+    
+    
+}
+.AboutNavTab{
+    @extend .NavTab;
+    padding: 0;
+    @include flexDirection(row);
+    .about{
+        
+        gap: 10px;
+        border-right: 1px solid grey;
+        width: 30%;
+        
+        .about-tab-navbar{
+            
+            height: auto;
+            width: 100%;
+            padding: 1rem;
+            @include flexDirection(column);
+            gap: 10px;
+            
+            li{
+                height: 30px;
+                width: 100%;
+                
+                
+                &:hover{
+                    background-color:rgb(81, 82, 84);
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                }
+                
+            }
+            a{
+                height: 100%; 
+                width: 100%;
+                color: white;
+                display: flex;
+                align-items: center;
+                border-radius: 5px;
+                
+                
+            }
+            #active{
+                color: rgb(38,113,255);
+                background-color: rgba(15,143,243, 0.5);
+            }
+            
+        }
+        
+    }
+    .about-tab-content{
+        height: 100%;
+        padding: 1rem;
+        .overview-content{
+            @include flexDirection(column);
+            gap: 30px;
+            
+            .works, .studied, .lived, .status{
+                @include flexDirection(row);
+                gap: 20px;
+                align-items: center;
+                h4{
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+}
+.pop-up-post-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10000000000000011;
+    
+    background-color: rgba(58, 58, 60,0.8);
+    
+    
+}
+.post-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: auto;
+    width: 400px;
+    background: rgb(20, 20, 21);
+    border-radius: 10px;
+    z-index: 10000000000000012;
+    
+    .create-post-title{
+        padding: 1rem;
+        @include flexDirection(row);
+        justify-content: flex-end;
+        align-items: center;
+        .create-post{
+            margin: auto;
+        }
+        .close-btn{
+            
+            button{
+                border: none;
+                outline: none;
+                background: grey;
+                padding: 0.5rem;
+                border-radius: 20px;
+                cursor: pointer;
+            }
+        }
+        
+    }
+    .create-post-details{
+        
+        
+        padding: 1rem;
+        padding-bottom: 0px;
+        @include flexDirection(row);
+        gap: 5px;
+        .mini-pic{
+            height: 40px;
+            width: 40px;
+        }
+        button{
+            @include flexCenter;
+            
+        }
+    }
+    .create-post-content{
+        
+        padding: 1rem;
+        
+        textarea{
+            background: transparent;
+            outline: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            width: 100%;
+            resize: none;
+            
+            max-height: 200px;
+        }
+    }
+    .post-btn{
+        
+        
+        padding: 1rem;
+        
+        button{
+            border-radius: 10px;
+            width: 100%;
+            height: 40px;
+        }
+    }
 }
 @mixin tablet {
 	@media (max-width: 907px){
@@ -741,6 +1282,56 @@ a{
         .nav-links-0{
             font-size: 3rem;
             gap: 10px;
+            .facebook-logo{
+                height: 40px;
+                width: 40px;
+                
+            }
+            
+        }
+    }
+    .super-header{
+        .profile-timeline-container{
+            height: calc(700px - 100px);
+            .profile-timeline{
+                position: relative;
+                max-width: 100%;
+            }
+            .profile-picture{
+                height: 400px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                top: -100px;
+                
+                .profile-name{
+                    @include flexCenter;
+                    
+                }
+                .DisplayProfileActions{
+                    @include flexDirection(row);
+                    
+                }
+            }
+            
+        }
+        
+    }
+    
+}
+@mixin nav-header {
+	@media (max-width: 1295px){
+		@content;
+	}
+}
+@include nav-header{
+    
+    .nav-header{
+        
+        .nav-links-0{
+            
+            
             input{
                 font-size: 3rem;
                 height: 40px;
@@ -748,7 +1339,40 @@ a{
                 padding: 0;
                 border-radius: 50%;
                 content: "ahs";
+                
+            }
+        }
+        
+        .nav-links-2{
+            
+            justify-content: flex-end;
+            .show-hidden-profile{
+                display: none;
+            }
+        }
+        
+    }
+    
+    
+}
+@mixin mobile {
+	@media (max-width: 605px){
+		@content;
+	}
+}
+@include mobile{
+    .nav-header{
+        .nav-links-1{
+            width: 10%;
+            margin-right: auto;
+            .square-hover{
+                display: none;
+            }
+            .show-hidden-burger{
+                display:flex;
+                overflow-y: hidden;
             }
         }
     }
+
 }

@@ -4,23 +4,30 @@ export const postdata = [
         id: 1,
         posts: [
             {
-                id: 1,
+                post_id: 0,
                 post: "How are you",
                 comment: [
                     {
-                        id: 1,
-                        comment1: 'hi'
+                        comment_id: 0,
+                        comment1: 'hi',
+                        replies: [
+                            {
+                                reply_id: 0,
+                                reply1: 'LOL HAHAHA!'
+                            }
+                        ]
+                        
                     },
                     {
-                        id: 2,
+                        comment_id: 1,
                         comment1: 'hello world im here to be doomed!',
                         replies: [
                             {
-                                id: 1,
+                                reply_id: 0,
                                 reply1: 'LOL HAHAHA!'
                             },
                             {
-                                id: 2,
+                                reply_id: 1,
                                 reply1: 'DANG HAHHAHAH'
                             }
                         ]
@@ -28,38 +35,57 @@ export const postdata = [
                 ]
             },
             {
-                id: 2,
+                post_id: 1,
                 post: "Feeling good",
                 comment: [
                     {
-                        id: 1,
-                        comment1: 'hi'
+                        comment_id: 0,
+                        comment1: 'hi',
+                        replies: [
+                            
+                        ]
                     },
                     {
-                        id: 2,
-                        comment1: 'YOW'
+                        comment_id: 1,
+                        comment1: 'YOW',
+                        replies: [
+                            {
+                                reply_id: 0,
+                                reply1: 'YES YOW HAHAHA!'
+                            },
+                            {
+                                reply_id: 1,
+                                reply1: 'LOWNLOW HAHHAHAH'
+                            }
+                        ]
                     },
                 ]
             }
             ,
             {
-                id: 3,
-                post: "Shut the fuck up!",
+                post_id: 2,
+                post: "Hi!",
                 comment: [
                     {
-                        id: 1,
-                        comment1: 'hi'
+                        comment_id: 0,
+                        comment1: 'hi',
+                        replies: [
+                            
+                        ]
                     }
                 ]
             }
             ,
             {
-                id: 4,
+                post_id: 3,
                 post: "Hell no!",
                 comment: [
                     {
-                        id: 1,
-                        comment1: 'hi'
+                        comment_id: 0,
+                        comment1: 'hi',
+                        replies: [
+                            
+                        ]
                     }
                 ]
             }
@@ -69,9 +95,19 @@ export const postdata = [
         id: 2,
         posts: [
             {
-                id: 1,
-                post: "I'm fine",
-                comment: ''
+                post_id: 0,
+                post: "Jade Kenneth is my type",
+                comment: []
+            }
+        ]
+    },
+    {
+        id: 3,
+        posts: [
+            {
+                post_id: 0,
+                post: "Jade Kenneth is my type",
+                comment: []
             }
         ]
     } 

@@ -69,4 +69,20 @@ export const reducer = (state,action) => {
             
         }
     }
+    if(action.type === "MODAL_POST"){
+        return {
+            ...state,
+            dataFound: true,
+            postModal: true
+            
+        }
+    }
+    if(action.type === "MODAL_POST_CLOSE"){
+        return {
+            ...state,
+            postModal: false
+            
+        }
+    }
+    
 };
