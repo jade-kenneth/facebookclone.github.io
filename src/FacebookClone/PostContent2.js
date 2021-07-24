@@ -68,7 +68,12 @@ const PostContent2 = () => {
             const timer = setTimeout(() => {
                 dispatch({type:"POSTS_DATA", payload: id});
             },5000)
+
+            return () => {
+                clearTimeout(timer);
+            }
         }
+        
     },[])
     
         

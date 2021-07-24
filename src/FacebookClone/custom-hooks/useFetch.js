@@ -22,7 +22,7 @@ export const useFetch = (url) => {
     }, [url]);
 
     useEffect(() => {
-       
+        
             getData();
         
 
