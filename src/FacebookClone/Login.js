@@ -111,7 +111,7 @@ const Login = () => {
                                         <input type="password" placeholder="Password" name={password}
                                         value={passwords} ref={login_btn}  onChange={handleChangePass}/>
                                         {showLabel && <p style={{marginRight:'auto', color: 'red'}}>Wrong password try again!</p> }
-                                            {isCorrect ? <Link to={`/${email.substring(0, email.lastIndexOf("@"))}/`} className="login-btn" onClick={() => dispatch({type: "SET_AUTH", AUTH_ACCOUNT: authorizedData.activeAccount })} >Login</Link>
+                                            {isCorrect ? <Link to={`facebook.com/${email.substring(0, email.lastIndexOf("@"))}/`} className="login-btn" onClick={() => dispatch({type: "SET_AUTH", AUTH_ACCOUNT: authorizedData.activeAccount })} >Login</Link>
                                             :<Link to="/facebook.com" onClick={action}  className="login-btn">Login</Link>
                                         }
                                     </div>

@@ -278,7 +278,7 @@ const PhotosTab = React.memo((props) => {
 })
 const FriendsTab = React.memo((props) => {
     const [changed, setChanged] = useState(false);
-    const [friendData, setFriendData] = useState(friend_data);kb
+    const [friendData, setFriendData] = useState(friend_data);
     const [searchFriends, setsearchFriends] = useState('');
     
     const handleChange = (e) => {
