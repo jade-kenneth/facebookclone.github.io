@@ -49,7 +49,7 @@ const Profile = React.memo(() => {
     return (
             <div className="profile-container">
                 
-                {authorizedData.isLogged ?  <DisplayProfile authorizedData={authorizedData.activeAccount}/>  : <Redirect to="/facebook.com"/> }
+                {authorizedData.isLogged ?  <DisplayProfile authorizedData={authorizedData.activeAccount}/>  : <Redirect to="/"/> }
                 
                 
                 
@@ -65,7 +65,7 @@ const Header = React.memo((props) => {
     const {authorizedData, dispatch} = AuthorizedUserData();
     const pushAndClear = async() => {
         const clear = await dispatch({type: "LOGGED_OUT"});
-        const clearStorage = await history.push('/facebook.com');
+        const clearStorage = await history.push('/');
     }
     
     
@@ -377,16 +377,16 @@ const DisplayProfileNavs = ({id, profile, username, lastname, lived, job, pic,em
     
     const refCont = useRef(null);
     
-    const [changed, setChanged] = useState({valueLink: '/facebook.com'});
+    const [changed, setChanged] = useState({valueLink: '/'});
     const SwitchTab = React.memo((props) => {
         
             switch(props.url){
-                case `facebook.com/${email.substring(0, email.lastIndexOf("@")) + "/friends"}`:
+                case `/${email.substring(0, email.lastIndexOf("@")) + "/friends"}`:
                     return ( <> <FriendsTab email={email}/> 
                     <PhotosTab email={email}/>  <AboutTab email={email} lived={lived} job={job}/> </>)
-                case `facebook.com/${email.substring(0, email.lastIndexOf("@")) + "/photos"}`:
+                case `/${email.substring(0, email.lastIndexOf("@")) + "/photos"}`:
                     return ( <> <PhotosTab email={email}/> <AboutTab email={email} lived={lived} job={job}/>  </>)
-                case `facebook.com/${email.substring(0, email.lastIndexOf("@")) + "/about"}`:
+                case `/${email.substring(0, email.lastIndexOf("@")) + "/about"}`:
                     return (<> <AboutTab email={email} lived={lived} job={job}/> <FriendsTab email={email}/> 
                         <PhotosTab email={email}/>  </>)
                 default:
@@ -478,7 +478,7 @@ Profile.protoTypes = {
 }
 const DisplayProfile = (props) => {
     const [state, dispatch] = useReducer(reducer, defaultState);
-    const [link, setLink] = useState('/facebook.com');
+    const [link, setLink] = useState('/');
     return (
         <React.Fragment>
             

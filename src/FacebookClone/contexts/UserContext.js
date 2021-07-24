@@ -56,7 +56,7 @@ export function UserContextProvider ({children}){
     //     const response = await axios.post('http://localhost:8000/userPosts/', request)
     //     setPosts([...posts, response.data]);
     // }
-
+    
     const [authorizedData, dispatch] = useReducer(authReducer,[],()=>{
         
         const localData = localStorage.getItem('authorizedData');
