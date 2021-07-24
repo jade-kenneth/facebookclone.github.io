@@ -49,7 +49,7 @@ const Profile = React.memo(() => {
     return (
             <div className="profile-container">
                 
-                {authorizedData.isLogged ?  <DisplayProfile authorizedData={authorizedData.activeAccount}/>  : <Redirect to="/"/> }
+                {authorizedData.isLogged ?  <DisplayProfile authorizedData={authorizedData.activeAccount}/>  : <Redirect to="/facebook.com"/> }
                 
                 
                 
@@ -65,7 +65,7 @@ const Header = React.memo((props) => {
     const {authorizedData, dispatch} = AuthorizedUserData();
     const pushAndClear = async() => {
         const clear = await dispatch({type: "LOGGED_OUT"});
-        const clearStorage = await history.push('/');
+        const clearStorage = await history.push('/facebook.com');
     }
     
     
@@ -278,7 +278,7 @@ const PhotosTab = React.memo((props) => {
 })
 const FriendsTab = React.memo((props) => {
     const [changed, setChanged] = useState(false);
-    const [friendData, setFriendData] = useState(friend_data);
+    const [friendData, setFriendData] = useState(friend_data);kb
     const [searchFriends, setsearchFriends] = useState('');
     
     const handleChange = (e) => {
@@ -326,6 +326,9 @@ const FriendsTab = React.memo((props) => {
                     }) }
                     
                 </ul>
+                <div className="three-dot">
+                    <BsThreeDots/>
+                </div>
             </div>
             <AllFriends friendData={friendData}/>
             
@@ -374,18 +377,18 @@ const DisplayProfileNavs = ({id, profile, username, lastname, lived, job, pic,em
     
     const refCont = useRef(null);
     
-    const [changed, setChanged] = useState({valueLink: '/'});
+    const [changed, setChanged] = useState({valueLink: '/facebook.com'});
     const SwitchTab = React.memo((props) => {
         
             switch(props.url){
-                case `/${email.substring(0, email.lastIndexOf("@")) + "/friends"}`:
+                case `facebook.com/${email.substring(0, email.lastIndexOf("@")) + "/friends"}`:
                     return ( <> <FriendsTab email={email}/> 
                     <PhotosTab email={email}/>  <AboutTab email={email} lived={lived} job={job}/> </>)
-                case `/${email.substring(0, email.lastIndexOf("@")) + "/photos"}`:
+                case `facebook.com/${email.substring(0, email.lastIndexOf("@")) + "/photos"}`:
                     return ( <> <PhotosTab email={email}/> <AboutTab email={email} lived={lived} job={job}/>  </>)
-                case `/${email.substring(0, email.lastIndexOf("@")) + "/about"}`:
+                case `facebook.com/${email.substring(0, email.lastIndexOf("@")) + "/about"}`:
                     return (<> <AboutTab email={email} lived={lived} job={job}/> <FriendsTab email={email}/> 
-                        <PhotosTab email={email}/>  <AboutTab email={email} lived={lived} job={job}/>  </>)
+                        <PhotosTab email={email}/>  </>)
                 default:
                     return (
                         // {PostTab(id:id,  profile:profile,  username:username, lastname:lastname, lived:lived, picpic} job={job})}
@@ -463,7 +466,7 @@ const ProfilePicture = React.memo(({username, profile, lastname})=> {
                                     <li><a href="#"><GrAddCircle/>Add to Story</a></li>
                                     <li><a href="#"><FaPen/>Edit Profile</a></li>
                                     {/* <li><a href="#"><AiFillEye/></a></li>
-                                    <li><a href="#"><BsThreeDots/></a></li> */}
+                                    <li><a href="#"></a></li> */}
                                 </ul>
                         </div>
                     </div>
@@ -475,7 +478,7 @@ Profile.protoTypes = {
 }
 const DisplayProfile = (props) => {
     const [state, dispatch] = useReducer(reducer, defaultState);
-    const [link, setLink] = useState('/');
+    const [link, setLink] = useState('/facebook.com');
     return (
         <React.Fragment>
             

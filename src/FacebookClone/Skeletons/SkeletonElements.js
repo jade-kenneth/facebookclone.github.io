@@ -1,5 +1,5 @@
 import React from 'react'
-import Shimmer from '../../scss/Shimmer';
+import Shimmer from './Shimmer';
 const SkeletonElements =  ({ type }) => {
     const classes = `skeleton ${type}`;
     return (

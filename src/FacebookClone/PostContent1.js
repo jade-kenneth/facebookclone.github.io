@@ -114,10 +114,9 @@ const Photos = (props) => {
         <div className="photo-list" >
         {  photos.slice(0, 9).map((data) => {
             const {photo, id} = data 
-            return (
+            return (    
                 <div key={id} className="photo-list-container">
-                    <img src={photo} alt="sahhsa" className="myphotos"/>
-                    
+                    <img src={photo} alt="sahhsa"  id="myphoto" style={{width:'100%', height: '100%'}}/>
                 </div>
                 
             )

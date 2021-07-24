@@ -1,4 +1,4 @@
-import jadekenneth from '../img/jadekenneth.jpg';
+import jadekenneth from './img/jadekenneth.jpg';
 
 export const login_data = [
     {

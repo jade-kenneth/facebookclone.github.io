@@ -1,5 +1,5 @@
 import React, { createContext, useMemo, useContext, useState, useHistory, useReducer, useEffect, useCallback } from "react";
-import defaultProfile from '../../img/unknownboy.jpg'
+
 import {useFetch} from '../custom-hooks/useFetch';
 import { authReducer } from "../authReducer";
 import { postdata } from "../postdata";

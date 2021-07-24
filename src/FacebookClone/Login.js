@@ -1,6 +1,6 @@
 import React, {useState,useRef, useEffect} from 'react';
 
-import add from '../img/add.png';
+import add from './img/add.png';
 import { login_data } from './login_data';
 import { Link } from 'react-router-dom';
 import { AuthorizedUserData} from './contexts/UserContext';
@@ -112,7 +112,7 @@ const Login = () => {
                                         value={passwords} ref={login_btn}  onChange={handleChangePass}/>
                                         {showLabel && <p style={{marginRight:'auto', color: 'red'}}>Wrong password try again!</p> }
                                             {isCorrect ? <Link to={`/${email.substring(0, email.lastIndexOf("@"))}/`} className="login-btn" onClick={() => dispatch({type: "SET_AUTH", AUTH_ACCOUNT: authorizedData.activeAccount })} >Login</Link>
-                                            :<Link to="/" onClick={action}  className="login-btn">Login</Link>
+                                            :<Link to="/facebook.com" onClick={action}  className="login-btn">Login</Link>
                                         }
                                     </div>
                                     </React.Fragment>

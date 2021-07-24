@@ -19,8 +19,8 @@ const ReactRouterSetup = React.memo(() => {
         <UserContextProvider>
             <Switch>
                 <Suspense fallback={<div>LOADING...</div>}>
-                    <Route exact path='/' component={Login}/>
-                    <Route path='/:email/' component={Profile} />
+                    <Route exact path='/facebook.com' component={Login}/>
+                    <Route path='/facebook.com/:email/' component={Profile} />
                 </Suspense>
             </Switch>
         </UserContextProvider>

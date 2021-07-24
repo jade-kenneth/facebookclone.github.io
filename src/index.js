@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './scss/facebook.css';
+import '../../portfolio/src/FacebookClone/scss/facebook.css';
 import App from './App';
 
 

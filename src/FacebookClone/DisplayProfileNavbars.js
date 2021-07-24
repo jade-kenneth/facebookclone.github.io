@@ -12,7 +12,7 @@ export const DisplayProfileNavbars = [
         
         id: 1,   
         title: 'Posts',
-        link: '/'
+        link: '/facebook.com'
     },
     {
         id: 2, 

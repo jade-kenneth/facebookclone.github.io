@@ -1,10 +1,10 @@
 import React, { useRef,useEffect,useState} from 'react'
-import man from '../img/maninsuit1.png';
-import js from '../img/js.jpg';
-import css from '../img/css.png';
-import html from '../img/html.jpg';
-import nodejs from '../img/nodejs.png';
-import react from '../img/react.png';
+import man from './maninsuit1.png';
+import js from './js.jpg';
+import css from './css.png';
+import html from './html.jpg';
+import nodejs from './nodejs.png';
+import react from './react.png';
 import { Button } from '@material-ui/core';
 import {TweenMax,TimelineMax, Power3,Power0, Bounce, Power2, Powe} from 'gsap';
 import gsap from 'gsap/gsap-core';
